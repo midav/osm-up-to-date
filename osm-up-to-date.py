@@ -56,7 +56,7 @@ def run_populating():
     user, db, pas = readConfig()
     osmosis = "osmosis"
     run_osmosis = subprocess.Popen([osmosis, "--read-xml-change-0.6", "compressionMethod=gzip", "downloads" + "/" + download_lock(),
-        "--write-apidb-change-0.6", "user=" + "\"" + user + "\"", "database=" + "\"" + db + "\"",
+        "--write-apidb-change-0.6", "user=" + user, "database=" + db,
         "password=" + "\"" + pas + "\"", "validateSchemaVersion=no" ], stderr=subprocess.STDOUT, stdout=subprocess.PIPE)
     if run_osmosis.wait() != 0:
         logger.info('Populating failed due to issue with osmosis, see the log file')
